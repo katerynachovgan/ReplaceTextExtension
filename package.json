@@ -1,0 +1,21 @@
+{
+  "name": "replacetextextension",
+  "version": "1.0.0",
+  "description": "Replace some text in inputs",
+  "main": "background.js",
+  "scripts": {
+    "start": "webpack --watch --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
+  },
+  "author": "KatCh",
+  "license": "ISC",
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^9.0.1",
+    "css-loader": "^6.3.0",
+    "html-webpack-plugin": "^5.3.2",
+    "mini-css-extract-plugin": "^2.4.1",
+    "webpack": "^5.57.1",
+    "webpack-cli": "^4.9.0"
+  }
+}
