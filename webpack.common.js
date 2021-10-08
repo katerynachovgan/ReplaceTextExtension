@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {
@@ -9,9 +8,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     entry: {
-        popup: path.resolve(__dirname, './src/popup.js'),
-        background: path.resolve(__dirname, './src/background.js'),
-        content: path.resolve(__dirname, './src/content.js')
+        content: path.resolve(__dirname, './src/content.js'),
     },
     output: {
         path: path.resolve(__dirname, './dist'),
@@ -24,17 +21,11 @@ module.exports = {
         }, ]
     },
     plugins: [
-        new CleanWebpackPlugin({
-            cleanStaleWebpackAssets: false
-        }),
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, './src/popup.html'),
-            filename: 'popup.html',
-        }),
+        new CleanWebpackPlugin(),
         new MiniCssExtractPlugin(),
         new CopyWebpackPlugin({
             patterns: [{
-                    from: './manifest.json',
+                    from: './src/manifest.json',
                     to: 'manifest.json'
                 },
                 {
