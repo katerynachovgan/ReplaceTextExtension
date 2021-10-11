@@ -53,40 +53,37 @@ const replacementWord = (key) => {
 }
 
 document.addEventListener('input', event => {
+    
     enteredText += event.data;
-     console.log(enteredText);
 
     if (event.data === ' ') {
         enteredText = enteredText.trimEnd();
         let elem = event.target;
-        // console.log(event);
+        elem.blur();
 
         let key = isTextEndsWithDictKey(enteredText, dictKeys);
-        console.log(key)
 
         if ((elem.tagName.toLowerCase() == 'input' &&
                 elem.getAttribute('type').toLowerCase() == 'text')) {
             elementValue = elem.value;
-            console.log(elementValue);
         }
 
         if (elem.isContentEditable) {
             elementValue = elem.textContent;
-            console.log(elementValue);
         }
 
         if (key) {
             let textForReplace = enteredText.slice(0, -key.length);
-            console.log("entered text after slice: ", textForReplace)
+            // console.log("entered text after slice: ", textForReplace)
             replacementWord(key);
 
             let targetWord;
             replaceWordsContainer.addEventListener('click', function (e) {
                 targetWord = e.target.innerText;
                 textForReplace += targetWord + " ";
-                console.log('enteredText after replace: ', textForReplace)
+                // console.log('enteredText after replace: ', textForReplace)
                 elementValue = elementValue.replace(enteredText, textForReplace);
-                console.log(elementValue)
+                // console.log(elementValue)
                 eclipse.remove();
                 elem.isContentEditable ? elem.textContent = elementValue :
                     elem.value = elementValue;
